@@ -20,6 +20,9 @@ package org.apache.dubbo.springboot.demo.provider;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.springboot.demo.DemoService;
 
+/**
+ * 提供服务
+ */
 @DubboService
 public class DemoServiceImpl implements DemoService {
 
@@ -27,4 +30,10 @@ public class DemoServiceImpl implements DemoService {
     public String sayHello(String name) {
         return "Hello " + name;
     }
+
+    @Override
+    public String sayHello2(String name) {
+        return name;
+    }
+
 }

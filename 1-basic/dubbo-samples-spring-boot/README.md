@@ -1,58 +1,20 @@
 # Dubbo Spring Boot Example
-
-This example shows how to use Dubbo Spring Boot Starter to develop Dubbo application. For the underlying RPC protocol, we are using triple and at the same time, we use java interface as the way to define service. It's a more convenient way to develop Dubbo application if there's no cross-language communication requirement.
-
-Please refer to
-* [the official documentation](https://dubbo.apache.org/zh-cn/overview/quickstart/java/spring-boot/) for more details of developing Dubbo with Spring Boot.
-* [dubbo-samples-spring-boot-idl](../dubbo-samples-spring-boot-idl) for how to use IDL(Protobuf) together with triple protocol.
-
-
+简单的Dubbo 实例
 ## Modules
-* interface, provides Dubbo service definition
-* provider, implements Dubbo service
-* consumer, consumes Dubbo service
+* interface, provides Dubbo 服务定义
+* provider, implements Dubbo 服务提供者
+* consumer, consumes Dubbo 服务消费者
 
 # How to run
 
 ## Start Nacos
-This example replies on Nacos as service discovery registry center, so you need to run the Nacos server first, there are two ways to do so:
-1. [Download Nacos binary and start it directly](https://dubbo-next.staged.apache.org/zh-cn/overview/reference/integrations/nacos/#本地下载)
-2. [Start Nacos using docker](https://dubbo-next.staged.apache.org/zh-cn/overview/reference/integrations/nacos/#docker)
+使用Nacos 为注册中心，需要先下载nacos ：https://nacos.io/zh-cn/docs/quick-start.html
 
 ## Install dependencies
-Step into 'dubbo-samples-spring-boot' directory, run the following command:
+maven 项目中，使用的JDK8，所以Spring Boot 版本要在3.0一下，不然会出现版本不兼容的问题。
 
-```shell
-$ mvn clean install
-```
+## start project
 
-## Start provider
-Enter provider directory:
-```shell
-$ cd dubbo-samples-spring-boot-provider
-```
+首先启动 provider项目,然后启动consumer项目
 
-then, run the following command to start provider:
-```shell
-$ mvn compile exec:java -Dexec.mainClass="org.apache.dubbo.springboot.demo.provider.ProviderApplication"
-```
-
-Run the following command to see server works as expected:
-```shell
-curl \
-    --header "Content-Type: application/json" \
-    --data '["Dubbo"]' \
-    http://localhost:50052/org.apache.dubbo.springboot.demo.DemoService/sayHello/
-```
-
-## Start consumer
-Enter provider directory:
-```shell
-$ cd dubbo-samples-spring-boot-consumer
-```
-
-then, run the following command to start consumer:
-```shell
-$ mvn compile exec:java -Dexec.mainClass="org.apache.dubbo.springboot.demo.consumer.ConsumerApplication"
-```
 

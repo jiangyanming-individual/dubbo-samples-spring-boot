@@ -23,6 +23,9 @@ import org.apache.dubbo.springboot.demo.DemoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * 服务调用
+ */
 @Component
 public class Task implements CommandLineRunner {
     @DubboReference
@@ -32,6 +35,9 @@ public class Task implements CommandLineRunner {
     public void run(String... args) throws Exception {
         String result = demoService.sayHello("world");
         System.out.println("Receive result ======> " + result);
+
+        String result2 = demoService.sayHello2("yupi");
+        System.out.println("Receive result ======> " + result2);
 
         new Thread(()-> {
             while (true) {
